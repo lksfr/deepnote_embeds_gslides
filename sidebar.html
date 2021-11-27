@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <style>
+        .logo {
+            vertical-align: middle;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        form {
+            display: table;
+        }
+
+        .formp {
+            display: table-row;
+        }
+
+        label {
+            display: table-cell;
+        }
+
+        input {
+            display: table-cell;
+        }
+
+        .collapsible {
+            background-color: #4d8ffc;
+            background: #4d8ffc;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #4d8ffc;
+        }
+
+        .cols {
+            padding-top: 110%;
+        }
+
+        .content {
+            display: none;
+            overflow: hidden;
+            background-color: white;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="sidebar branding-below">
+        <p class="formp">
+            <label>Embed link:</label>
+            <input type="text" id="embed" name="embed"><br>
+        </p><br><br>
+
+        <p class="formp">
+            <label>Slide Number:</label>
+            <input type="text" id="slideno" name="slideno" value="1"><br>
+        </p>
+        <p class="formp">
+            <label>Width (px): </label>
+            <input type="text" id="w" name="w" value="450"><br>
+        </p>
+        <p class="formp">
+            <label>Height (px):</label>
+            <input type="text" id="h" name="h" value="450"><br><br>
+        </p>
+        <div class="block" id="button-bar">
+            <button type="button" class="blue" id="embed-it" onClick="runEmbed(); return false;">Add To Slide</button>
+        </div>
+        <p class="error" id="error"></p>
+        <p class="status" id="status"></p>
+    </form>
+
+    <div class="cols">
+        <hr>
+        <button type="button" class="collapsible">What is Deepnote?</button>
+        <div class="content">
+            <p>Deepnote is a new kind of data science notebook. Jupyter-compatible with real-time collaboration and
+                running in the cloud along with a bunch of other cool features. You can sign up for free <a
+                    href="https://deepnote.com?utm_source=workspace&utm_medium=wsaddon&utm_campaign=wsaddon"
+                    target="_blank">here</a></p>
+        </div>
+        <button type="button" class="collapsible">What are shared blocks and embeds?</button>
+        <div class="content">
+            <p>Deepnote allows users to share the code and/or output of a specific cell in their notebooks. These
+                "shared blocks" are usually embedded using something called "iframe". However, it is not possible to do
+                so in Google Slides. This add-on provides a workaround and allows you to add embed links & connect the
+                images to your Deepnote shared blocks. As soon as you click refresh, all plots and code cells inserted
+                using this add-on will be refreshed and reflect the most up-to-date state of your notebook.</p>
+        </div>
+        <button type="button" class="collapsible">How does this add-on work?</button>
+        <div class="content">
+            <p>Great question! This add-on will maintain an overview of all connections through object IDs on your
+                Google Drive in a file called "DeepNote_Slides_AddOn_MetaData_DontDelete". Please do not delete this
+                file.</p>
+        </div>
+        <button type="button" class="collapsible">How do I refresh my blocks?</button>
+        <div class="content">
+            <p>To refresh all blocks, go to your Google Slides menu bar under "Add-Ons" and select "Deepnote Embeds".
+                There you will an option to refresh all blocks in the current presentation.</p>
+        </div>
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <div class="sidebar bottom">
+        <img alt="Add-on logo" class="logo"
+            src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/mskeswxmzvkxizuuqvmy"
+            width="27" height="27">
+        <span class="gray branding-text"><a
+                href="https://deepnote.com?utm_source=workspace&utm_medium=wsaddon&utm_campaign=wsaddon"
+                target="_blank">Powered by Deepnote. Sign up for free.</a></span>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+
+        function runEmbed() {
+            $('#status').text('Please wait a moment...');
+            document.getElementById("embed-it").disabled = true;
+            var linkit = $('#embed').val();
+            google.script.run.withSuccessHandler(function () {
+                document.getElementById("embed-it").disabled = false;
+                $('#status').text('');
+                return false;
+            }).withFailureHandler(function (msg, element) {
+                document.getElementById("embed-it").disabled = false;
+                $('#status').text('');
+                $('#error').text('Something went wrong. Please ensure you entered a valid Deepnote Embed URL.');
+                return false;
+            }).embedDeepnote(linkit, $('#w').val(), $('#h').val(), $('#slideno').val());
+
+
+        }
+    </script>
+</body>
+
+</html>

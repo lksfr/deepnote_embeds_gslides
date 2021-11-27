@@ -1,0 +1,45 @@
+{
+    "timeZone": "America/Los_Angeles",
+    "exceptionLogging": "STACKDRIVER",
+    "runtimeVersion": "V8",
+    "dependencies": {
+      "enabledAdvancedServices": [
+        {
+          "userSymbol": "Drive",
+          "serviceId": "drive",
+          "version": "v2"
+        }
+      ]
+    },
+    "oauthScopes": [
+      "https://www.googleapis.com/auth/script.container.ui",
+      "https://www.googleapis.com/auth/script.external_request",
+      "https://www.googleapis.com/auth/presentations",
+      "https://www.googleapis.com/auth/drive",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/script.locale"
+    ],
+    "addOns": {
+      "common": {
+        "layoutProperties": {
+          "primaryColor": "#000000",
+          "secondaryColor": "#8a8a8a"
+  
+        },
+        "logoUrl": "https://embeds-workspace.s3.eu-central-1.amazonaws.com/embeds.png",
+        "name": "Deepnote Embeds",
+        "useLocaleFromApp": true
+      },
+      "slides": {
+        "homepageTrigger": {
+          "runFunction": "showSidebar"
+        },
+        "onFileScopeGrantedTrigger": {
+          "runFunction": "onInstall"
+        }
+      }
+    },
+    "urlFetchWhitelist": [
+      "https://shot.screenshotapi.net/"
+    ]
+  }

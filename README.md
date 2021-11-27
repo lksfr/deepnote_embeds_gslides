@@ -1,4 +1,4 @@
-# Embed Deepnote Cell Outpouts On Google Slides 📈
+# Embed Deepnote Cell Outputs On Google Slides 📈
 
 
 [![Languages](https://img.shields.io/github/languages/count/lksfr/deepnote_embeds_gslides)](https://img.shields.io/github/languages/count/lksfr/deepnote_embeds_gslides)

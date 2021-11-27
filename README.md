@@ -2,7 +2,7 @@
 
 
 [![Languages](https://img.shields.io/github/languages/count/lksfr/deepnote_embeds_gslides)](https://img.shields.io/github/languages/count/lksfr/deepnote_embeds_gslides)
-[[![CodeFactor](https://www.codefactor.io/repository/github/lksfr/deepnote_embeds_gslides/badge)](https://www.codefactor.io/repository/github/lksfr/deepnote_embeds_gslides)
+[![CodeFactor](https://www.codefactor.io/repository/github/lksfr/deepnote_embeds_gslides/badge)](https://www.codefactor.io/repository/github/lksfr/deepnote_embeds_gslides)
 [![Quality](https://img.shields.io/github/issues/lksfr/deepnote_embeds_gslides)](https://img.shields.io/github/issues/lksfr/deepnote_embeds_gslides)
 
 Google Slides does not allow for embedded content, making it difficult to integrate in modern, notebook-centric analytics efforts. Copying large numbers of screenshots or saved plots into slides just to have to repeat the process once the data or code change is far from ideal. Use this code to build a workaround Google Slides add-on that will...
